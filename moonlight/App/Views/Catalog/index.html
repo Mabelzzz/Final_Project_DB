@@ -1,0 +1,75 @@
+{%extends "base.html" %}
+
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="base.html; charset=utf-8" />
+<title>Product List</title>
+
+</head>
+
+<body>
+<table width="600" border="1" align="center" bordercolor="#666666">
+  <tr>
+    <td width="91" align="center" bgcolor="#CCCCCC"><strong>ภาพ</strong></td>
+    <td width="200" align="center" bgcolor="#CCCCCC"><strong>ชื่อสินค้า</strong></td>
+    <td width="44" align="center" bgcolor="#CCCCCC"><strong>ราคา</strong></td>
+    <td width="60" align="center" bgcolor="#CCCCCC"><strong>สี</strong></td>
+    <td width="44" align="center" bgcolor="#CCCCCC"><strong>ไซส์</strong></td>
+    <td width="60" align="center" bgcolor="#CCCCCC"><strong>สต็อค</strong></td>
+  </tr>
+  <div class="col-sm-4 col-sm-6 single"><!-- col-sm-4 col-sm-6 single Begin -->
+          $p_id = $_GET['ProductID];
+          $p_pic = $_GET['ProductPicture'];
+          $p_name = $_GET['ProductName'];
+          $p_price = $_GET['ProductPrice'];
+          $p_color = $_GET['ProductColor'];
+          $p_size = $_GET['ProductSize'];
+
+                <div class="product"><!-- product Begin -->
+                    
+                    <a href="Detail.php">
+                        
+                       <td><img class="img-responsive" src="ProductPicture" alt="Product 1"></td> 
+                        
+                    </a>
+                    
+                    <div class="text"><!-- text Begin -->
+                        
+                        <h1>
+                            <a href="Detail.php">
+                                echo "$p_pic"
+                            </a>
+                        </h1>
+                        
+                        <td><h2 class="price">"ProductPrice"</h2></td>
+                        
+                        <p class="button">
+                            
+                            <a href="Detail.php" class="btn btn-default">View Details</a>
+                            
+                            <a href="Details.php" class="btn btn-primary">                            
+                            </a>
+                            
+                        </p>
+                        
+                    </div><!-- text Finish -->
+                    
+                </div><!-- product Finish -->
+                
+            </div><!-- col-sm-4 col-sm-6 single Finish -->
+  
+
+{% block title %} Catalog {% endblock %}
+{% block body %}
+{% for p in products %}
+
+        <br>ProductId: {{p.ProductId}}
+        <br>ProductName: {{p.ProductName}}
+        <br>ProductPrice: {{p.ProductPrice}}
+        <br>ProductSize: {{p.ProductSize}}
+        <br>ProductColor: {{p.ProductColor}}
+        <br>ProductStock: {{p.ProductStock}}
+        <br>ProductPicture: {{p.ProductPicture}}
+    {% endfor %}
+    
+{% endblock %}
